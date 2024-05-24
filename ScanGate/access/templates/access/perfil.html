@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de {{ nombre }}</title>
+</head>
+<body>
+    <h1>Perfil</h1>
+
+    <p>Nombre: {{ nombre }}</p>
+    <p>Ciudad y estado: {{ ciudad_estado }}</p>
+    <p>Correo electrónico: {{ correo }}</p>
+    <p>Empresa: {{ empresa }}</p>
+    <p>Número de teléfono: {{ num_telefono }}</p>
+    <p>Código de barras: {{ codigo_barras }}</p>
+    <p>Hora de entrada: {{ hora_entrada }}</p>
+    <h2>Subir foto</h2>
+
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="nueva_foto">Seleccionar foto:</label>
+        <input type="file" id="nueva_foto" name="nueva_foto" required>
+        <button type="submit">Subir foto</button>
+    </form>
+
+    </body>
+</html>
