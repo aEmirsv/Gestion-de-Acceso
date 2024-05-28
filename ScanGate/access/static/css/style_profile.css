@@ -1,0 +1,93 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #e0e4e8;
+	color: #333;
+	margin: 0;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.container {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+	width: 100%;
+	max-width: 500px;
+	text-align: center;
+}
+
+h1 {
+	color: #265083;
+	margin-bottom: 20px;
+	font-size: 24px;
+}
+
+p {
+	margin: 10px 0;
+	font-size: 18px;
+}
+
+form {
+	margin-top: 20px;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: #265083;
+	font-size: 18px;
+}
+
+input[type="file"] {
+	margin-bottom: 20px;
+	padding: 10px;
+	font-size: 16px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #265083;
+	color: white;
+	border: none;
+	padding: 15px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+button:hover {
+	background-color: #1f3d66;
+}
+
+@media (min-width: 600px) {
+	.container {
+		width: 80%;
+		max-width: 600px;
+		padding: 40px;
+	}
+
+	h1 {
+		font-size: 28px;
+	}
+
+	p, label {
+		font-size: 20px;
+	}
+
+	input[type="file"] {
+		font-size: 18px;
+	}
+
+	button {
+		font-size: 20px;
+		width: auto;
+	}
+}
