@@ -18,14 +18,32 @@
         <p><strong>Empresa:</strong> {{ empresa }}</p>
         <p><strong>Número de teléfono:</strong> {{ num_telefono }}</p>
         <p><strong>Código de barras:</strong> {{ codigo_barras }}</p>
+
+        {% if hora_entrada == 0 %}
+
+        <p><strong>Ultima hora de entrada:</strong> {{ ultima_hora }}</p>
+
+        <div class="foto">
+            <img src="data:image/jpeg;base64,{{ foto }}" alt="Foto de {{ nombre }}">
+        </div>
+
+        {% else %}
+
         <p><strong>Hora de entrada:</strong> {{ hora_entrada }}</p>
-        
+            
         <form action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="nueva_foto">Seleccionar foto:</label>
             <input type="file" id="nueva_foto" name="nueva_foto" required>
             <button type="submit">Subir foto</button>
         </form>
+
+        {% endif %}
+        
+
+        
+
+
     </div>
 </body>
 </html>
