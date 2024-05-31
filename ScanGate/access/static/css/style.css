@@ -3,31 +3,41 @@ body {
     background-color: #e0e4e8;
     color: #333;
     margin: 0;
-    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 h1 {
     color: #265083;
-    margin-bottom: 20px;
-    font-size: 36px;
+    margin-bottom: 40px;
+    font-size: 40px;
     text-align: center;
 }
 
+.camara{
+    width: 60%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
 video {
-    border: 2px solid #265083;
+    /* border: black solid 2px; */
     border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    margin-bottom: 20px;
+    
+    /* height: 100%; */
+    object-fit: contain;
 }
 
 button {
+    height: 10%;
+    width: 100%;
+    
     background-color: #265083;
     color: white;
     border: none;
@@ -35,9 +45,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
-    width: 100%;
+    
     max-width: 200px;
-    margin-bottom: 20px;
 }
 
 button:hover {
@@ -61,4 +70,17 @@ select {
     margin-top: 10px;
     width: 100%;
     max-width: 300px;
+}
+
+@media(max-width:600px){
+    h1{
+        margin-bottom: 20px;
+    }
+    .camara{
+        height: 50%;
+        width: 80%;
+    }
+    video{
+        width: 100%;
+    }
 }
