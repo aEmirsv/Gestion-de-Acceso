@@ -12,7 +12,6 @@ def perfil(request, codigo_barras):
 
     with transaction.atomic():
         persona = get_object_or_404(Registros, codigo_barras=codigo_barras)
-        print(persona.hora_entrada)
         persona_horas = eval(persona.hora_entrada)
 
         horas_totales = persona_horas + hora_actual
