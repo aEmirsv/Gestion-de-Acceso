@@ -10,9 +10,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{ codigo_barras }}</h1>
+        <h1>{{ nombre }}</h1>
 
-        <p><strong>Nombre:</strong> {{ nombre }}</p>
         <p><strong>Ciudad y estado:</strong> {{ ciudad_estado }}</p>
         <p><strong>Correo electrónico:</strong> {{ correo }}</p>
         <p><strong>Empresa:</strong> {{ empresa }}</p>
@@ -41,6 +40,8 @@
     <div class="fotoReg">
         <img src="data:image/jpeg;base64,{{ foto }}" alt="Foto de {{ nombre }}">
     </div>
+
+    <a href="/">Regresar a inicio</a>
     {% endif %}
 
 </body>
