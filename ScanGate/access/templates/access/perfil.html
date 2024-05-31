@@ -23,10 +23,6 @@
 
         <p><strong>Ultima hora de entrada:</strong> {{ ultima_hora }}</p>
 
-        <div class="foto">
-            <img src="data:image/jpeg;base64,{{ foto }}" alt="Foto de {{ nombre }}">
-        </div>
-
         {% else %}
 
         <p><strong>Hora de entrada:</strong> {{ hora_entrada }}</p>
@@ -39,11 +35,13 @@
         </form>
 
         {% endif %}
-        
-
-        
-
-
     </div>
+
+    {% if hora_entrada == 0 %}
+    <div class="fotoReg">
+        <img src="data:image/jpeg;base64,{{ foto }}" alt="Foto de {{ nombre }}">
+    </div>
+    {% endif %}
+
 </body>
 </html>
