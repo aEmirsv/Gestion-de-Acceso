@@ -9,110 +9,17 @@
     <meta name="author" content="ZXing for JS">
 
     <title>ScanGate</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
-<style>
-  body {
-      font-family: Arial, sans-serif;
-      background-color: #e0e4e8;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-  }
 
-  h1 {
-      color: #265083;
-      margin-bottom: 20px;
-      font-size: 36px;
-      text-align: center;
-  }
-
-  video {
-      border: 2px solid #265083;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      margin-bottom: 20px;
-  }
-
-  button {
-      background-color: #265083;
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
-      width: 100%;
-      max-width: 200px;
-      margin-bottom: 20px;
-  }
-
-  button:hover {
-      background-color: #1f3d66;
-  }
-
-  #sourceSelectPanel {
-      margin-top: 20px;
-      text-align: center;
-  }
-
-  label {
-      font-size: 18px;
-      color: #265083;
-      font-weight: bold;
-  }
-
-  select {
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 10px;
-      width: 100%;
-      max-width: 300px;
-  }
-</style>
 <body>
   <h1>SCANGATE</h1>
   <video id="video"></video>
   <button id="startButton">Escanear</button>
+
   <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>
-  <script>
-    window.addEventListener('load', function () {
-    let selectedDeviceId;
-    const codeReader = new ZXing.BrowserMultiFormatReader()
-    console.log('El lector de código esta iniciado')
-    codeReader.listVideoInputDevices()
-        .then((videoInputDevices) => {
-            const sourceSelect = document.getElementById('sourceSelect')
-            selectedDeviceId = videoInputDevices[0].deviceId
-            if (videoInputDevices.length > 0 ) {
-              selectedDeviceId = videoInputDevices[1].deviceId
-            }
-            document.getElementById('startButton').addEventListener('click', () => {
-                codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-                    if (result) {
-                        console.log(result)
-                        // Redirigir a /perfil/ seguido del resultado del código de barras
-                        window.location.href = `/perfil/${result.text}`;
-                    }
-                    if (err && !(err instanceof ZXing.NotFoundException)) {
-                        console.error(err)
-                        document.getElementById('result').textContent = err
-                    }
-                })
-                
-            })
-        })
-        .catch((err) => {
-            console.error(err)
-        })
-})
-  </script>
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
 
 </html>
