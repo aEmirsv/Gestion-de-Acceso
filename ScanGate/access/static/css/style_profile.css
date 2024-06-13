@@ -15,6 +15,21 @@ body {
 	flex-wrap: wrap;
 }
 
+nav{
+	background-color: white;
+	border-radius: 10px;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+	top: 0;
+    left: 0;
+}
+
+img{
+    max-height: 100%;
+}
+
 .container {
 	height: 55%;
 	width: 40%;
@@ -43,26 +58,28 @@ p {
 }
 
 form {
-	margin-top: 20px;
+	margin-top: 10px;
 	display: flex;
 	justify-content: center;
-	flex-direction: row;
+	flex-direction: column; /* Cambiado a columna para apilar verticalmente */
 	flex-wrap: wrap;
+	align-items: center; /* Centra los elementos horizontalmente */
+	width: 90%; /* Asegura que el formulario ocupe el ancho completo */
 }
 
 label {
-	height: 10%;
 	margin-bottom: 10px;
 	font-weight: bold;
 	color: #265083;
 	font-size: 18px;
+	width: 100%; /* Hace que los labels ocupen el ancho completo del contenedor */
+	text-align: center; /* Centra el texto del label */
 }
 
 input[type="file"] {
-	height: 10%;
 	margin-bottom: 10px;
 	font-size: 16px;
-	box-sizing: border-box;
+	width: 100%; /* Hace que el input ocupe el ancho completo del contenedor */
 }
 
 button {
@@ -73,8 +90,8 @@ button {
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 18px;
-	width: 60%;
-	box-sizing: border-box;
+	width: 60%; /* Controla el ancho del botón */
+	margin-top: 10px; /* Añade un poco de espacio superior */
 }
 
 .fotoReg {
@@ -112,6 +129,16 @@ button:hover {
 }
 
 @media (max-width: 600px) {
+	body{
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+	nav{
+		background-color: unset;
+        height: 10%;
+        position: unset;
+    }
+
 	.container {
 		width: 80%;
 		height: 95%;
@@ -140,6 +167,9 @@ button:hover {
 	button {
 		margin-top: 15px;
 		font-size: 15px;
-		width: auto;
+		width: 40%;
+	}
+	a{
+		width: 50%;
 	}
 }
