@@ -2,51 +2,67 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de {{ nombre }}</title>
     <link rel="stylesheet" href="{% static 'css/style_profile.css' %}">
 </head>
+
 <body>
     <nav>
         <img src="{% static 'img/doxal.png' %}" alt="Logo">
+        <img class="logo-Krono" src="{% static 'img/Kronoteclogo.png' %}" alt="Kronotec">
     </nav>
 
-    <div class="container">
-        <h1>{{ nombre }}</h1>
+    <main>
+        <div class="informacion">
+            <h1>{{ nombre }}</h1>
+            <p><strong>Ciudad y estado:</strong> {{ ciudad_estado }}</p>
+            <p><strong>Correo electrónico:</strong> {{ correo }}</p>
+            <p><strong>Empresa:</strong> {{ empresa }}</p>
+            <p><strong>Número de teléfono:</strong> {{ num_telefono }}</p>
+            <p><strong>Código de barras:</strong> {{ codigo_barras }}</p>
+            
+             <p><strong>Curso: </strong></p> <!-- Agregar aqui un if para que solo salga curso si tiene valor en el campo  -->
 
-        <p><strong>Ciudad y estado:</strong> {{ ciudad_estado }}</p>
-        <p><strong>Correo electrónico:</strong> {{ correo }}</p>
-        <p><strong>Empresa:</strong> {{ empresa }}</p>
-        <p><strong>Número de teléfono:</strong> {{ num_telefono }}</p>
-        <p><strong>Código de barras:</strong> {{ codigo_barras }}</p>
+            {% if hora_entrada == 0 %}
+
+            <p><strong>Ultima hora de entrada:</strong> {{ ultima_hora }}</p>
+
+            {% else %}
+
+            <form action="." method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <label for="horario">Horario:</label>
+                <select id="horario" name="horario" required>
+                    <option value="horario 1">Horario 1</option>
+                    <option value="horario 2">Horario 2</option>
+                </select>
+
+
+                <label for="nueva_foto">Seleccionar foto:</label>
+                <input type="file" id="nueva_foto" name="nueva_foto" required>
+                <button type="submit">Subir foto</button>
+            </form>
+
+            {% endif %}
+
+        </div>
 
         {% if hora_entrada == 0 %}
-
-        <p><strong>Ultima hora de entrada:</strong> {{ ultima_hora }}</p>
-
-        {% else %}
-
-        <p><strong>Hora de entrada:</strong> {{ hora_entrada }}</p>
-            
-        <form action="." method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="nueva_foto">Seleccionar foto:</label>
-            <input type="file" id="nueva_foto" name="nueva_foto" required>
-            <button type="submit">Subir foto</button>
-        </form>
-
+        <div class="foto">
+            <img src="data:image/jpeg;base64,{{ foto }}" alt="Foto de {{ nombre }}">
+        </div>
         {% endif %}
-    </div>
 
+    </main>
     {% if hora_entrada == 0 %}
-    <div class="fotoReg">
-        <img src="data:image/jpeg;base64,{{ foto }}" alt="Foto de {{ nombre }}">
-    </div>
-
     <a href="/">Regresar a inicio</a>
     {% endif %}
 
 </body>
+
 </html>
