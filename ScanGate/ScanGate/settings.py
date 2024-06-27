@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-i5rz+7=j(sr_hgv!=m8ydwbly4yx91)+!-x4&67en65=u2g8_j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['barnacle-above-morally.ngrok-free.app', '127.0.0.1']
+ALLOWED_HOSTS = ['77.243.85.203','scangate.site', '127.0.0.1']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -112,20 +113,19 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'static'))
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'access/static'),
-]
+STATICFILES_DIRS = [BASE_DIR / 'access/static']
+STATIC_ROOT = '/var/www/scangate/static'
 
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['https://barnacle-above-morally.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://scangate.site','http://scangate.site']
