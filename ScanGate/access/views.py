@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
 from .models import Registros
 from django.urls import reverse
@@ -7,9 +8,11 @@ from django.db import transaction
 import time
 import base64
 
+@login_required
 def access(request):
     return render(request, 'access/index.html')
 
+@login_required
 def perfil(request, codigo_barras):
     hora_actual = [time.asctime(time.localtime())]
 
