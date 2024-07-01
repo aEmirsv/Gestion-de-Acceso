@@ -22,7 +22,7 @@ def perfil(request, codigo_barras):
 
         horas_totales = persona_horas + hora_actual
 
-        Registros.objects.filter(codigo_barras=codigo_barras).update(hora_entrada=horas_totales)    
+        Registros.objects.filter(codigo_barras=codigo_barras).update(hora_entrada=horas_totales)
 
     if request.method == 'POST':
         nueva_foto = request.FILES.get('nueva_foto')
@@ -31,8 +31,7 @@ def perfil(request, codigo_barras):
             persona.save()
             return redirect('/')
 
-    # Si no se habia registrado antes
-
+    # Si no se había registrado antes
     if persona.foto == "S/N":
         context = {
             'nombre': persona.nombre,
@@ -45,7 +44,7 @@ def perfil(request, codigo_barras):
         }
     else:
         foto = base64.b64encode(persona.foto).decode()
-    # Ya se habia registrado
+        # Ya se había registrado
         context = {
             'nombre': persona.nombre,
             'ciudad_estado': persona.ciudad_estado,
@@ -57,8 +56,6 @@ def perfil(request, codigo_barras):
             'ultima_hora': persona_horas[-1],
             'foto': foto
         }
-
-
 
     return render(request, 'access/perfil.html', context)
 
