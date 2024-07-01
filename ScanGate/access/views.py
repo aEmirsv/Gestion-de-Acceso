@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
 from .models import Registros
+from django.urls import reverse
 from django.db import transaction
 import time
 import base64
@@ -55,3 +58,17 @@ def perfil(request, codigo_barras):
 
 
     return render(request, 'access/perfil.html', context)
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            return render(request, 'access/login.html', {'error': 'Invalid username or password'})
+    return render(request, 'access/login.html')
