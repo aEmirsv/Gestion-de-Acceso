@@ -7,11 +7,22 @@ window.addEventListener('load', function () {
 
         .then((videoInputDevices) => {
 
-            if (videoInputDevices.length >= 2 ) {
-              selectedDeviceId = videoInputDevices[1].deviceId
-            }
-            else {
-                selectedDeviceId = videoInputDevices[0].deviceId
+            const sourceSelect = document.getElementById('sourceSelect')
+            selectedDeviceId = videoInputDevices[0].deviceId
+            if (videoInputDevices.length >= 1) {
+                videoInputDevices.forEach((element) => {
+                    const sourceOption = document.createElement('option')
+                    sourceOption.text = element.label
+                    sourceOption.value = element.deviceId
+                    sourceSelect.appendChild(sourceOption)
+                })
+
+                sourceSelect.onchange = () => {
+                    selectedDeviceId = sourceSelect.value;
+                };
+
+                const sourceSelectPanel = document.getElementById('sourceSelectPanel')
+                sourceSelectPanel.style.display = 'block'
             }
 
             document.getElementById('startButton').addEventListener('click', () => {
@@ -26,7 +37,7 @@ window.addEventListener('load', function () {
                         document.getElementById('result').textContent = err
                     }
                 })
-                
+
             })
         })
         .catch((err) => {
