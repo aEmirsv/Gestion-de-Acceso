@@ -9,7 +9,8 @@ window.addEventListener('load', function () {
 
             const sourceSelect = document.getElementById('sourceSelect')
             selectedDeviceId = videoInputDevices[0].deviceId
-            if (videoInputDevices.length >= 1) {
+            if (videoInputDevices.length >= 2) {
+                selectedDeviceId = videoInputDevices[1].deviceId
                 videoInputDevices.forEach((element) => {
                     const sourceOption = document.createElement('option')
                     sourceOption.text = element.label
