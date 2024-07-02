@@ -24,19 +24,27 @@
             <p><strong>Empresa:</strong> {{ empresa }}</p>
             <p><strong>Número de teléfono:</strong> {{ num_telefono }}</p>
             <p><strong>Código de barras:</strong> {{ codigo_barras }}</p>
-            <p><strong>Horario:</strong>{{horario}}</p>
-
             
-             <p><strong>Curso: </strong></p> <!-- Agregar aqui un if para que solo salga curso si tiene valor en el campo  -->
+
+            {% if curso != "S/N" %}
+            <p><strong>Curso: </strong>{{curso}}</p>
+            {% endif %}
 
             {% if hora_entrada == 0 %}
 
             <p><strong>Ultima hora de entrada:</strong> {{ ultima_hora }}</p>
+            <p><strong>Horario:</strong>{{horario_comida}}</p>
 
             {% else %}
 
             <form action="." method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+
+                <label for="horario">Horario:</label>
+                <select id="horario" name="horario">
+                    <option value="horario 1">Horario 1</option>
+                    <option value="horario 2">Horario 2</option>
+                </select>
 
                 <label for="nueva_foto">Seleccionar foto:</label>
                 <input type="file" id="nueva_foto" name="nueva_foto" required>
